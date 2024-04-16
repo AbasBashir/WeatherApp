@@ -2,6 +2,7 @@ import React,{useState, useEffect} from 'react';
 import Header from './Header';
 import CityDetails from './CityDetails';
 import TempratureAndDetails from './TempratureAndDetails';
+import HourlyForecast from './HourlyForecast';
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
         <Header updateWeatherData={updateWeatherData} hourlyForecast={hourlyForecast} dailyForecast={dailyForecast}></Header>
         <CityDetails weatherData = {weatherData}></CityDetails>
         <TempratureAndDetails weatherData = {weatherData} sys={sys} degreeStatus={degreeStatus} setDegreeStatus={setDegreeStatus}></TempratureAndDetails>
+        <HourlyForecast hourlyForecastData={hourlyForecastData} degreeStatus={degreeStatus}></HourlyForecast>
 
       </div>
     </>
