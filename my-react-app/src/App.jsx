@@ -30,6 +30,28 @@ function App() {
     }
   }, []); // An empty array dependency means the it will only run once when the component mounts
 
+   // function used to fetch and handle hourly forecast
+   const hourlyForecast = (city) => {
+    fetch(`${base_Url}/forecast.json?key=${apiKey}&q=${city}&days=1&aqi=yes&alerts=no`)
+      .then(response => response.json())
+      .then(json => {
+
+         // below we are using optional chaining operator (represented by ?.) because it helps us safely access nested properties without causing error if an intermediate property is null or undefined. 
+         // If any property along the nested block is null or undefined, then the value returned will be an empty string, hence this optional chaining operator helps prevent throwing an error
+        const result = {
+          location: json?.location?.name,
+          firstHour: json?.forecast?.forecastday[0]?.hour|| "",
+        };
+
+        setHourlyForecastData(result);
+
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
+      });
+  };
+
+
   
   const fetchWeatherData = (latitude, longitude) => {
     fetch(`${base_Url}/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no`)
