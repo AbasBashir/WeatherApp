@@ -21,16 +21,25 @@ function Searchbar() {
         paddingLeft: '35px', 
     };
 
-  return (
-    <div className={`overflow-hidden flex-col container mx-auto rounded-md p-1`}>
-        <div className='w-full py-0.5 rounded-sm bg-white border-2 border-white outline-none'>
-        <input type="text" value={search} onChange={searchUpdate} style={inputStyle} placeholder='Search City' className='w-full pl-4 py-0.5 outline-none'/>
-        <ul className="list-none">
-            {searchResult.map((result, index) => <li key={index} className='mt-2 p-1.5 hover:bg-gray-200 cursor-pointer'><button className='pl-5 inline-block w-full text-left' onClick={() => handleCitySelect(result)}>{result.name ? `${result.name}, ${result.country}` : ''}</button></li>)}
-        </ul>
+    // This function is used to handle many things mentioned below
+    const handleCitySelect = (result) => {
+        updateWeatherData(result); // here we update the weatherData state in the App component
+        hourlyForecast(result.name); // here we update the hourlyForecastData state when user selects a city 
+        dailyForecast(result.name); // here we update the dailyForecastData name when user selects a city
+        setSearch(""); // Clear search input once the user selects a city
+        setSearchResult([]); // Clear search results
+      }
+
+    return (
+        <div className={`overflow-hidden flex-col container mx-auto rounded-md p-1`}>
+            <div className='w-full py-0.5 rounded-sm bg-white border-2 border-white outline-none'>
+            <input type="text" value={search} onChange={searchUpdate} style={inputStyle} placeholder='Search City' className='w-full pl-4 py-0.5 outline-none'/>
+            <ul className="list-none">
+                {searchResult.map((result, index) => <li key={index} className='mt-2 p-1.5 hover:bg-gray-200 cursor-pointer'><button className='pl-5 inline-block w-full text-left' onClick={() => handleCitySelect(result)}>{result.name ? `${result.name}, ${result.country}` : ''}</button></li>)}
+            </ul>
+            </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default Searchbar
