@@ -97,7 +97,7 @@ function App() {
         <CityDetails weatherData = {weatherData}></CityDetails>
         <TempratureAndDetails weatherData = {weatherData} sys={sys} degreeStatus={degreeStatus} setDegreeStatus={setDegreeStatus}></TempratureAndDetails>
         <HourlyForecast hourlyForecastData={hourlyForecastData} degreeStatus={degreeStatus}></HourlyForecast>
-
+        <DailyForecast dailyForecastData={dailyForecastData} degreeStatus={degreeStatus}></DailyForecast>
       </div>
     </>
   )
