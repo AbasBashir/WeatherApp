@@ -13,6 +13,38 @@ function App() {
   const [degreeStatus, setDegreeStatus] = useState(true); // State to store either celsius or fahrenheit on a condition, intially degreeStatus will have a boolean value of true whihc represents °C
 
 
+  
+  const fetchWeatherData = (latitude, longitude) => {
+    fetch(`${base_Url}/current.json?key=${apiKey}&q=${latitude},${longitude}&aqi=no`)
+      .then(response => response.json())
+      .then(json => {
+        const result = { // below we are using optional chaining operator (represented by ?.) because it helps us safely access nested properties without causing error if an intermediate property is null or undefined. If any property along the nested block is null or undefined, then the value returned will be an empty string, hence this optional chaining operator helps prevent throwing an error
+          name: json?.location?.name || "",
+          country: json?.location?.country || "",
+          lon: json?.location?.lon || "",
+          lat: json?.location?.lat || "",
+          date: json?.location?.localtime || "",
+          currentWeather: json?.current?.condition?.text || "",
+          currentWeatherIcon: json?.current?.condition?.icon || "",
+          temp_c: json?.current?.temp_c || "",
+          temp_f: json?.current?.temp_f || "",
+          humidity: json?.current?.humidity || "",
+          wind: json?.current?.wind_kph || "",
+          feels_c: json?.current?.feelslike_c || "",
+          feels_f: json?.current?.feelslike_f || "",
+        };
+
+        setWeatherData(result);
+        updateWeatherData(result);
+        hourlyForecast([result.name]);
+        dailyForecast([result.name]);
+
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
+      });
+  };
+  
    // Function to update weather data in App component
   const updateWeatherData = (data) => {
     setWeatherData(data);
