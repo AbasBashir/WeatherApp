@@ -30,6 +30,33 @@ function Searchbar() {
             return; 
         }
         
+        // Here we use fetch() to fetch data based on the city parameter
+        fetch(`https://api.weatherapi.com/v1/current.json?key=cc3a69cee89d442bbef103435240904&q=${city}&aqi=no`)
+        .then((response) => response.json()) //.then() is a method that handles the response from the server after we make a request. Response is the response from the server we then parse the response as JSON.
+        .then(json => { 
+            // below we are using optional chaining operator (represented by ?.) because it helps us safely access nested properties without causing error if an intermediate property is null or undefined. 
+            // If any property along the nested block is null or undefined, then the value returned will be an empty string, hence this optional chaining operator helps prevent throwing an error
+            const result = { 
+            name: json?.location?.name || "",
+            country: json?.location?.country || "",
+            lon: json?.location?.lon || "",
+            lat: json?.location?.lat || "",
+            date: json?.location?.localtime || "",
+            currentWeather: json?.current?.condition?.text || "",
+            currentWeatherIcon: json?.current?.condition?.icon || "",
+            temp_c: json?.current?.temp_c || "",
+            temp_f: json?.current?.temp_f || "",
+            humidity: json?.current?.humidity || "",
+            wind: json?.current?.wind_kph || "",
+            feels_c: json?.current?.feelslike_c || "",
+            feels_f: json?.current?.feelslike_f || "",
+            };
+    
+            setSearchResult([result]); // Here we update the searchResult state with the new data aggregate
+    
+            }).catch(error => { // The catch block handles any unsuccesful data request
+            console.error('Error fetching data:', error);
+        });
     }      
 
     // This function is used to handle many things mentioned below
