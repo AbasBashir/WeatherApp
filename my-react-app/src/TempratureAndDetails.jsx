@@ -49,7 +49,18 @@ function TempratureAndDetails({weatherData, sys, setDegreeStatus, degreeStatus})
                         </div>
                     </button>
                 </div> 
-     
+                <div className='flex flex-col items-center justify-center text-white relative top-8 space-y-2 pb-10 sm:flex-row sm:space-y-0 sm:top-16 md:top-24'>
+                    <div className='flex items-center justify-center sm:mr-20'>
+                        <img src={sunrise} alt="" className='w-6 h-4 mr-3'/>
+                        <h5 className='text-md font-bold'>Sunrise</h5>
+                        <p className='text-md font-semibol mt-[0.8px] ml-2'>{sys[0]}</p>
+                    </div>
+                    <div className='flex items-center justify-center sm:flex-row sm:mr-20'>
+                        <img src={sunset} alt="" className='w-6 h-4 mr-3'/>
+                        <h5 className='text-md font-bold'>Sunset</h5>
+                        <p className='text-md font-semibol mt-[0.8px] ml-2'>{sys[1]}</p>
+                    </div>
+                </div>
             </div>
         </>
     )}
