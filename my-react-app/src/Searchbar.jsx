@@ -22,8 +22,13 @@ function Searchbar() {
     };
 
   return (
-    <div>
-      
+    <div className={`overflow-hidden flex-col container mx-auto rounded-md p-1`}>
+        <div className='w-full py-0.5 rounded-sm bg-white border-2 border-white outline-none'>
+        <input type="text" value={search} onChange={searchUpdate} style={inputStyle} placeholder='Search City' className='w-full pl-4 py-0.5 outline-none'/>
+        <ul className="list-none">
+            {searchResult.map((result, index) => <li key={index} className='mt-2 p-1.5 hover:bg-gray-200 cursor-pointer'><button className='pl-5 inline-block w-full text-left' onClick={() => handleCitySelect(result)}>{result.name ? `${result.name}, ${result.country}` : ''}</button></li>)}
+        </ul>
+        </div>
     </div>
   )
 }
