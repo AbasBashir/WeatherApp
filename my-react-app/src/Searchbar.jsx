@@ -12,6 +12,15 @@ function Searchbar() {
         fetchData(value);
       }
 
+     // css style
+     const inputStyle = {
+        backgroundImage: `url(${searchLogo})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: '10px center',
+        backgroundSize: '18px 18px',
+        paddingLeft: '35px', 
+    };
+
   return (
     <div>
       
