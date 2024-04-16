@@ -13,6 +13,10 @@ function App() {
   const [degreeStatus, setDegreeStatus] = useState(true); // State to store either celsius or fahrenheit on a condition, intially degreeStatus will have a boolean value of true whihc represents °C
 
 
+   // Function to update weather data in App component
+  const updateWeatherData = (data) => {
+    setWeatherData(data);
+  };
 
   return (
     <>
