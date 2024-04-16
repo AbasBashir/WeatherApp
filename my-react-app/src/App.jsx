@@ -52,6 +52,25 @@ function App() {
       });
   };
 
+   // function used to fetch and handle daily forecast
+   const dailyForecast = (city) => {
+    fetch(`${base_Url}/forecast.json?key=${apiKey}&q=${city}&days=5&aqi=yes&alerts=no`)
+      .then(response => response.json())
+      .then(json => {
+        const result = { 
+          location: json?.location?.name,
+          forecastDays: json?.forecast?.forecastday|| "",
+          sunrise: json?.forecast?.forecastday[0].astro.sunrise|| "",
+          sunset: json?.forecast?.forecastday[0].astro.sunset|| "",
+
+        };
+        setDailyForecastData(result);
+        setSys([result.sunrise, result.sunset]); // storing and updating the sunset and sunrise timestamps on the current day
+      })
+      .catch(error => {
+        console.error('Error fetching weather data:', error);
+      });
+  };
 
   
   const fetchWeatherData = (latitude, longitude) => {
