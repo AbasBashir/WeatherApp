@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import Header from './Header';
 import CityDetails from './CityDetails';
+import TempratureAndDetails from './TempratureAndDetails';
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
       <div className="bg-gradient-to-br from-cyan-700 to-red-700 min-h-screen pt-50">
         <Header updateWeatherData={updateWeatherData} hourlyForecast={hourlyForecast} dailyForecast={dailyForecast}></Header>
         <CityDetails weatherData = {weatherData}></CityDetails>
+        <TempratureAndDetails weatherData = {weatherData} sys={sys} degreeStatus={degreeStatus} setDegreeStatus={setDegreeStatus}></TempratureAndDetails>
 
       </div>
     </>
