@@ -21,6 +21,17 @@ function Searchbar() {
         paddingLeft: '35px', 
     };
 
+    // This function is called from searchUpdate() where the input from user is passed in.
+    const fetchData = (city) =>{
+
+        // Here we check if the search value is empty or contains only whitespace
+        if (city.trim() === "") { 
+            setSearchResult([]); // If its true, then we clear the search results
+            return; 
+        }
+        
+    }      
+
     // This function is used to handle many things mentioned below
     const handleCitySelect = (result) => {
         updateWeatherData(result); // here we update the weatherData state in the App component
