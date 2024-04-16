@@ -8,7 +8,10 @@ import thermometer from './assets/thermometer.png';
 
 function TempratureAndDetails({weatherData, sys, setDegreeStatus, degreeStatus}) {
 
-
+   const updateDegreeStatus = () =>{
+    setDegreeStatus(!degreeStatus);
+   }; 
+   
   return (
     <div>
 
