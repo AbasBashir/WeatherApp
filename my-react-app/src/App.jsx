@@ -3,6 +3,7 @@ import Header from './Header';
 import CityDetails from './CityDetails';
 import TempratureAndDetails from './TempratureAndDetails';
 import HourlyForecast from './HourlyForecast';
+import DailyForecast from './DailyForecast';
 
 
 function App() {
