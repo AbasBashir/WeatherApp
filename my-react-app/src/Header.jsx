@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import weatherLogo from './assets/cloud.png';
 import searchLogo from './assets/search.png';
+import Searchbar from './Searchbar';
 
 function Header() {
 
