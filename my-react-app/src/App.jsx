@@ -12,6 +12,19 @@ function App() {
   const [dailyForecastData, setDailyForecastData] = useState(null); // State to store daily forecast data
   const [degreeStatus, setDegreeStatus] = useState(true); // State to store either celsius or fahrenheit on a condition, intially degreeStatus will have a boolean value of true whihc represents °C
 
+  useEffect(() => {
+    // Fetch weather data based on user's geolocation
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const { latitude, longitude } = position.coords;
+        fetchWeatherData(latitude, longitude);
+      }, (error) => {
+        console.error('Error getting geolocation:', error);
+      });
+    } else {
+      console.error('Geolocation is not working.');
+    }
+  }, []); // An empty array dependency means the it will only run once when the component mounts
 
   
   const fetchWeatherData = (latitude, longitude) => {
@@ -44,7 +57,7 @@ function App() {
         console.error('Error fetching weather data:', error);
       });
   };
-  
+
    // Function to update weather data in App component
   const updateWeatherData = (data) => {
     setWeatherData(data);
