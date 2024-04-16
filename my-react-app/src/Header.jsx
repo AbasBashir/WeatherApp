@@ -3,7 +3,7 @@ import weatherLogo from './assets/cloud.png';
 import searchLogo from './assets/search.png';
 import Searchbar from './Searchbar';
 
-function Header() {
+function Header({updateWeatherData, hourlyForecast, dailyForecast}) {
 
     const [isSearchOpen, setIsSearchOpen] = useState(false); // stateful variable + setter function used to manage the opening and closing of searchbar
 
@@ -23,7 +23,7 @@ function Header() {
             </div>
 
             {/* isSearchOpen is placed here as a conditional to display the Searbar component only when isSearchOpen is set to true */}
-            {isSearchOpen && <Searchbar/>} 
+            {isSearchOpen && <Searchbar updateWeatherData={updateWeatherData} hourlyForecast={hourlyForecast} dailyForecast={dailyForecast}/>} 
         </div>
     )
 

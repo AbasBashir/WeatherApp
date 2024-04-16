@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <div className="bg-gradient-to-br from-cyan-700 to-red-700 min-h-screen pt-50">
-        <Header></Header>
+        <Header updateWeatherData={updateWeatherData} hourlyForecast={hourlyForecast} dailyForecast={dailyForecast}></Header>
       </div>
     </>
   )
