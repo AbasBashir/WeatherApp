@@ -18,11 +18,11 @@ Welcome to WeatherZone! This is a simple web application that provides real-time
   - React.js
   
 - **Backend**:
-  - OpenWeatherMap API (for fetching weather data)
+  - OpenWeatherMap API
 
 ## Getting Started
 
-To run WeatherApp locally, follow these steps:
+To run WeatherZone locally, follow these steps:
 
 1. Clone this repository to your local machine:
 
