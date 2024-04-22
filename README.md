@@ -31,8 +31,8 @@ To run WeatherApp locally, follow these steps:
 
 2. To start the development server type the following:
 
-       ```bash
-       npm run dev
+   ```bash
+   npm run dev
 
 Explore the weather and good luck!
 
