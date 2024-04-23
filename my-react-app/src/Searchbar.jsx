@@ -33,7 +33,7 @@ function Searchbar({updateWeatherData, hourlyForecast, dailyForecast}) {
         }
         
         // Here we use fetch() to fetch data based on the city parameter
-        fetch(`https://api.weatherapi.com/v1/current.json?key=cc3a69cee89d442bbef103435240904&q=${city}&aqi=no`)
+        fetch(`https://api.weatherapi.com/v1/current.json?key=f41940c80c054da7897163247242304&q=${city}&aqi=no`)
         .then((response) => response.json()) //.then() is a method that handles the response from the server after we make a request. Response is the response from the server we then parse the response as JSON.
         .then(json => { 
             // below we are using optional chaining operator (represented by ?.) because it helps us safely access nested properties without causing error if an intermediate property is null or undefined. 

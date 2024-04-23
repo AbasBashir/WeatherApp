@@ -8,7 +8,7 @@ import DailyForecast from './DailyForecast';
 
 function App() {
 
-  const apiKey = 'cc3a69cee89d442bbef103435240904';
+  const apiKey = 'f41940c80c054da7897163247242304';
   const base_Url = 'https://api.weatherapi.com/v1';
 
   const [weatherData, setWeatherData] = useState(null); // this is the stateful setter variable that stores all data related to weather
